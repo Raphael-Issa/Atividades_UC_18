@@ -132,5 +132,5 @@ body {
 }
 
 .secao:hover {
-    background-color: #f3f5f5;
+    background-color: #f3f5f5; /* Cor de fundo ao passar o mouse */
 }
