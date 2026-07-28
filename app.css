@@ -1,0 +1,100 @@
+* {
+    margin: 0; /* Remove margens padrão de todos os elementos */
+    padding: 0; /* Remove preenchimento padrão de todos os elementos */
+    box-sizing: border-box; /* Inclui bordas e preenchimento no cálculo de largura e altura */
+    font-family: 'Arial', Tahoma, Geneva, Verdana, sans-serif; /* Define uma fonte padrão para todos os elementos */
+}
+
+
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+    h1{
+        color: yellow;
+        -webkit-text-stroke: 1px blue;
+    }
+}
+
+    .form{
+        display: flex;
+        margin-top: 25px;
+        gap: 10px;
+        justify-content: center;
+        flex-direction: column;
+        
+        width: 100%;           /* Ocupa a tela inteira em celulares */
+        max-width: 400px;      /* Não passa de 400px em telas maiores (ajuste este valor como quiser) */
+        margin-left: auto;     /* Centraliza o bloco na horizontal */
+        margin-right: auto;
+
+        #nome {
+        padding: 12px 16px;      /* Aumenta o espaço interno (cima/baixo e lados) */
+        font-size: 18px;          /* Deixa a letra maior dentro do campo */
+        width: 100%;             /* Faz o input ocupar toda a largura disponível do formulário */
+        border-radius: 6px;      /* Opcional: deixa as bordas levemente arredondadas */
+        border: 1px solid #0099ff;  /* Opcional: define uma borda padrão */
+        box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.1);
+        color: red;
+    }
+
+    #btLocalizar{
+        padding: 11px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 6px;
+        border: 1px solid #0099ff;
+        background-color: rgb(255, 251, 0);
+        color: red;
+    }
+
+}
+
+/* Configuração do Container Principal */
+.conjunto {
+  display: flex;
+  flex-wrap: wrap;       /* Permite que os cards fiquem lado a lado e dobrem de linha */
+  gap: 20px;            /* Espaço entre um card e outro */
+  justify-content: center; /* Centraliza todos os cards na tela */
+  padding: 20px;
+}
+
+/* Centralização do conteúdo DENTRO de cada card */
+.nomePkm {
+  display: flex;
+  flex-direction: column; /* Empilha a imagem acima do texto */
+  align-items: center;    /* Centraliza imagem e parágrafo na horizontal */
+  justify-content: center;/* Centraliza na vertical (caso tenha altura fixa) */
+  
+  /* Estilização opcional do card */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: 150px;
+  text-align: center;     /* Garante que o texto fique centralizado */
+  background-color: #f9f9f9;
+
+    /* Ajuste na imagem para não estourar o card */
+.nomePkm img {
+  width: 96px;
+  height: 96px;
+}
+
+/* Deixar o nome com a primeira letra maiúscula e formatado */
+.nomePkm p {
+  margin-top: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+
+}
+
+
+
+
+
+
+

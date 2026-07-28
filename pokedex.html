@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pokedex</title>
+  <link rel="stylesheet" href="app.css">
+
+
+</head>
+<body>
+  
+  <div>
+    <header class="titulo">
+      <h1>Quem é esse pokémon?</h1>
+    </header>
+    
+    
+    <main class = "main">
+      
+      <form class="form" action="" method="POST" enctype="multipart/form-data">
+
+        <input type="text" name="nome" id="nome" required placeholder="Digite o nome do pokémon">
+        <button id="btLocalizar" type="submit">Localizar</button>
+
+    </form>
+
+      <div class="conjunto">
+        
+
+        
+
+    </main>
+
+  </div>
+
+
+
+
+
+
+
+  <script>
+
+        async function exibirPokemons() {
+  try {
+    // 1. Busca a lista inicial dos 20 Pokémons
+    const resposta = await fetch('https://pokeapi.co/api/v2/pokemon?limit=2000');
+    const dados = await resposta.json();
+
+    // 2. Faz uma busca individual para cada Pokémon para pegar a imagem
+    const promessasDetalhes = dados.results.map(pokemon => 
+      fetch(pokemon.url).then(res => res.json())
+    );
+
+    // Espera todas as buscas individuais terminarem
+    const listaCompleta = await Promise.all(promessasDetalhes);
+
+    // 3. Seleciona o container "conjunto"
+    const conjunto = document.querySelector('.conjunto');
+
+    // 4. Loop 'for' percorrendo os Pokémons com Nome e Imagem
+    for (let i = 0; i < listaCompleta.length; i++) {
+      const pokemon = listaCompleta[i];
+
+      // Pega o nome e o link da imagem
+      const nome = pokemon.name;
+      const imagemUrl = pokemon.sprites.front_default; // Imagem padrão do Pokémon
+
+      // Criamos a div da classe "nomePkm"
+      const divPkm = document.createElement('div');
+      divPkm.classList.add('nomePkm');
+
+      // Criamos a tag <img> para a foto
+      const img = document.createElement('img');
+      img.src = imagemUrl;
+      img.alt = nome;
+
+      // Criamos a tag <p> para o nome
+      const paragrafo = document.createElement('p');
+      paragrafo.textContent = nome;
+
+      // Inserimos a imagem e o parágrafo dentro da div "nomePkm"
+      divPkm.appendChild(img);
+      divPkm.appendChild(paragrafo);
+
+      // Inserimos a div dentro do container "conjunto"
+      conjunto.appendChild(divPkm);
+    }
+
+  } catch (erro) {
+    console.error('Erro ao buscar e exibir os Pokémons:', erro);
+  }
+}
+
+exibirPokemons();
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>
